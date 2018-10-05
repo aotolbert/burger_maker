@@ -62,6 +62,19 @@ var orm = {
         cb(result);
         });
         
+    },
+
+    create: function(tableInput, name, cb) {
+        var queryString = `INSERT INTO ${tableInput} (isEaten, name) VALUES (false, "${name}");`;
+        console.log(queryString);
+        connection.query(queryString, name, function(err, result) {
+        if (err) {
+            throw err;
+        }
+
+        cb(result);
+        });
+        
     }
 };
 

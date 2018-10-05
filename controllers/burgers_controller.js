@@ -39,6 +39,16 @@ router.put("/devour/:id", function(req, res) {
   });
 });
 
+
+
+  router.post("/addBurger/", function(req, res) {
+    burger.create(req.body.name, function(result) {
+      // Send back the ID of the new quote
+      res.json({ id: result.insertId });
+    });
+  });
+
+
 // Export routes for server.js to use.
 
 module.exports = router;
