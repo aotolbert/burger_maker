@@ -1,0 +1,68 @@
+<h1>Welcome to Good Burger, Home of the Good burger, May I take your Order?</h1>
+
+<h2>Completed Orders:</h2>
+
+<ul>
+  {{#each burgers}}
+    {{#unless isEaten}}
+      {{> burgerMaker}}
+    {{/unless}}
+  {{/each}}
+</ul>
+
+<ul>
+  {{#each burgers}}
+    {{#if isEaten}}
+      {{> eatenBurgers}}
+    {{/if}}
+  {{/each}}
+</ul>
+
+
+
+
+<h2>Add a Burger</h2>
+<form class="create-form">
+
+  <div class="form-group">
+    <label for="ca">Burger Name:</label>
+    <input type="text" id="ca" name="name">
+  </div>
+
+  {{!-- <div class="form-group">
+    <label for="slee">Sleepy?</label><br>
+    <input type="radio" name="sleepy" value="1" checked> Sleepy!<br>
+    <input type="radio" name="sleepy" value="0"> Awake
+  </div> --}}
+
+  <button type="submit">Add Cat</button>
+</form>
+
+<script>
+
+$(function() {
+  $(".devour-it").on("click", function(event) {
+    var id = $(this).data("id");
+    var eaten = $(this).data("isEaten");
+
+    var devoured = {
+      isEaten: eaten
+    };
+
+    // Send the PUT request.
+    $.ajax("/devour/" + id, {
+      type: "PUT",
+      data: devoured
+    }).then(
+      function() {
+        console.log("Successfully devoured the Burger");
+        // Reload the page to get the updated list
+        location.reload();
+      }
+    );
+  });
+
+});
+
+</script>
+
