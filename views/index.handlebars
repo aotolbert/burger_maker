@@ -1,44 +1,74 @@
-<h1>Welcome to Good Burger, Home of the Good burger, May I take your Order?</h1>
-
-<h2>Completed Orders:</h2>
-
-<ul>
-  {{#each burgers}}
-    {{#unless isEaten}}
-      {{> burgerMaker}}
-    {{/unless}}
-  {{/each}}
-</ul>
-
-<h2>Previous Orders:</h2>
+<h1 class="mt-5 mb-5 mr-auto ml-auto text-center">Think you can come up with better burgers than Bob? Lets see what you've got!</h1>
 
 
-<ul>
-  {{#each burgers}}
-    {{#if isEaten}}
-      {{> eatenBurgers}}
-    {{/if}}
-  {{/each}}
-</ul>
+<div class="container">
+
+    <div class="row mb-5">
+
+      <div class="col-sm-7 mr-4">
+
+        <h2>Completed Orders:</h2>
+          <ul>
+            {{#each burgers}}
+              {{#unless isEaten}}
+                {{> burgerMaker}}
+              {{/unless}}
+            {{/each}}
+          </ul>
+
+        </div>
+
+        <div class="col-sm-4">
 
 
+            <h2>Previous Orders:</h2>
 
 
-<h2>Add a Burger</h2>
-<form class="create-form">
+            <ul>
+              {{#each burgers}}
+                {{#if isEaten}}
+                  {{> eatenBurgers}}
+                {{/if}}
+              {{/each}}
+            </ul>
 
-  <div class="form-group">
-    <label for="ca">Burger Name:</label>
-    <input type="text" id="burgername" name="name">
+          </div>
+
+
   </div>
 
-  <button type="submit" id="add-burger">Order Burger</button>
-</form>
+  <div class="row">
+
+      <div class="col-sm-6">
+
+          <img src="https://vignette.wikia.nocookie.net/bobs-burgers-fanon/images/5/51/Bob_with_a_burger.png/revision/latest?cb=20170920181424" class="w-100 h-auto">
+
+      </div>
+
+    <div class="col-sm-6 mr-auto ml-auto">
+      
+      <h2>Add a Burger:</h2>
+      <form class="create-form">
+
+        <div class="form-group">
+          <label for="ca">Burger Name:</label>
+          <input type="text" id="burgername" name="name">
+        </div>
+
+        <button type="submit" id="add-burger">Order Burger</button>
+      </form>
+
+    </div>
+
+  </div>
+
+</div>
+
 
 <script>
 
 $(function() {
-  $(".devour-it").on("click", function(event) {
+  $("#devour-it").on("click", function(event) {
     var id = $(this).data("id");
     var eaten = $(this).data("isEaten");
 
